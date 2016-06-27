@@ -1,11 +1,12 @@
 #Sample
 
-This gist is provided us with several of json from the logging mechanism that being performed by addons from the kubernetes. Apparently, each of the nodes or previously named minions will have its own fluentd service and send the log data as a stream into the elastic search. Just look at the `json` files that being provided here to see, the config example of each of the node. There're actually several image that already being provided by google itself. 
+This repository is provided us with several of `yaml` from the logging mechanism that being performed by addons from the kubernetes. Apparently, each of the nodes or previously named minions will have its own fluentd service and send the log data as a stream into the elastic search. Just look at the `yaml` files that being provided here to see, the config example of each of the node. There're actually several image that already being provided by google itself. 
 
-The logging meschanism in the fluentd is a stream based logging mechanism, the behaviour of this could be seen from the sample that being provided in the kubernetes page, the counter.yaml, since it has been stated clearly there, there's not much that I want to write. I'm still trying to figure out could the system can be done for a new image, but I think I'll do it tomorrow. For now I'm just observing the pattern of how the logging mechanism that being performed in the addons itself.
+The logging meschanism in the fluentd is a stream based logging mechanism, the behaviour of this could be seen from the sample that being provided in the kubernetes page, the counter.yaml, since it has been stated clearly there, there's not much that I want to write. 
 
 ## Customize the Config
- Please read the conffiguration file available in the:
+
+Please read the conffiguration file available in the:
 
 ```bash
 kubernetes/cluster/gce and kubernetes/cluster/ubuntu
@@ -22,6 +23,13 @@ This is another reference in the [Logging with Elasticsearch and Kibana] (http:/
 ```bash
 KUBE_ENABLE_NODE_LOGGING= true
 ```
+
+The configuration file is depended on which environment that we use, for exampele the conf file that being provided there is another example that i took from the directory `kubernetes/cluster/gce/`. Go for the directory `conf` to see the example. I've change the conf file so that we could use kibana instead of default google dashboard.
+
+
+## Cluster Management With Kubernates
+
+Please kindly this interesting slide [Cluster management with kubernetes] (http://www.slideshare.net/SatnamSingh67/2015-0605-cluster-management-with-kubernetes). It should be given us several example for the architecture of logging system using the elastic. However this slide also told us about the possibility of using the grafana for the monitoring proccess. 
 
 Reading material:
 
