@@ -9,6 +9,13 @@ spec:
       labels:
         app: nginx
     spec:
+      volumes:
+      - name: varlog
+        hostpath:
+          - path: /var/log  
+      - name: varlibdockercontainers
+        hostpath:
+          - path: /var/lib/docker/containers  
       containers:
       - name: nginx
         image: nginx:1.7.9
