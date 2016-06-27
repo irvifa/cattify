@@ -9,6 +9,9 @@ spec:
       labels:
         app: elasticsearch-logging
     spec:
+      volumes:
+      - name: es-persistent-storage
+        emptyDir: {}
       containers:
       - name: elasticsearch-logging
         image: gcr.io/google_containers/elasticsearch:1.8
@@ -20,6 +23,6 @@ spec:
             containerPort: 9300
             protocol: TCP
         volumeMounts:
-          - name: es-peristent-storage
+          - name: es-persistent-storage
             mountPath: /data
             
