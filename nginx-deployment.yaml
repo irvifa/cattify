@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+      - name: fluentd-elasticsearch
+        image: gcr.io/google_containers/fluentd-elasticsearch:1.15
+        volumeMounts:
+          - name: varlog
+            mountPath: /var/log
+          - name: varlibdockercontainers
+            readOnly: true
+            mountPath: /var/lib/docker/containers
+      - name: elasticsearch
+        image: gcr.io/google_containers/elasticsearch:1.8

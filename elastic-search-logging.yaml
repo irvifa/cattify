@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: elasticsearch-logging
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: elasticsearch-logging
+    spec:
+      containers:
+      - name: elasticsearch-logging
+        image: gcr.io/google_containers/elasticsearch:1.8
+        ports:
+          - name: db
+            containerPort: 9200
+            protocol: TCP
+          - name: transport
+            containerPort: 9300
+            protocol: TCP
+        volumeMounts:
+          - name: es-peristent-storage
+            mountPath: /data
+            
