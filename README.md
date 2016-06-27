@@ -4,6 +4,25 @@ This gist is provided us with several of json from the logging mechanism that be
 
 The logging meschanism in the fluentd is a stream based logging mechanism, the behaviour of this could be seen from the sample that being provided in the kubernetes page, the counter.yaml, since it has been stated clearly there, there's not much that I want to write. I'm still trying to figure out could the system can be done for a new image, but I think I'll do it tomorrow. For now I'm just observing the pattern of how the logging mechanism that being performed in the addons itself.
 
+## Customize the Config
+ Please read the conffiguration file available in the:
+
+```bash
+kubernetes/cluster/gce and kubernetes/cluster/ubuntu
+```
+
+change the default config available there for the KUBE_LOGGING_SYSTEM into
+
+```bash
+KUBE_LOGGING_DESTINATION=elasticsearch
+```
+
+This is another reference in the [Logging with Elasticsearch and Kibana] (http://kubernetes.io/docs/getting-started-guides/logging-elasticsearch/) section. For installation in the local please change the default config `KUBE_ENABLE_NODE_LOGGING` into:
+
+```bash
+KUBE_ENABLE_NODE_LOGGING= true
+```
+
 Reading material:
 
 1. [Collecting Output of Containers in Kubernetes Pods] (http://blog.raintown.org/2014/11/logging-kubernetes-pods-using-fluentd.html)
