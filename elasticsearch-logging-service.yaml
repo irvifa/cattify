@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1	
+metadata:
+   name: elasticsearch-logging
+   labels:
+      k8s-app: elasticsearch-logging
+spec:
+  ports:
+  - protocol: TCP
+    port: 9200
+    targetPort: db
