@@ -1,0 +1,58 @@
+apiVersion: v1    
+kind: ReplicationController
+metadata:
+  creationTimestamp: 2016-06-27T08:11:07Z
+  generation: 1
+  labels:
+    k8s-app: elasticsearch-logging
+    kubernetes.io/cluster-service: "true"
+    version: v1
+  name: elasticsearch-logging-v1
+  namespace: kube-system
+  resourceVersion: "91"
+  selfLink: /api/v1/namespaces/kube-system/replicationcontrollers/elasticsearch-logging-v1
+  uid: b3057f62-3c3e-11e6-b290-42010a800002
+spec:
+  replicas: 2
+  selector:
+    k8s-app: elasticsearch-logging
+    version: v1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        k8s-app: elasticsearch-logging
+        kubernetes.io/cluster-service: "true"
+        version: v1
+    spec:
+      containers:
+      - image: gcr.io/google_containers/elasticsearch:1.8
+        imagePullPolicy: IfNotPresent
+        name: elasticsearch-logging
+        ports:
+        - containerPort: 9200
+          name: db
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+          requests:
+            cpu: 100m
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - mountPath: /data
+          name: es-persistent-storage
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: es-persistent-storage
+status:
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  replicas: 2

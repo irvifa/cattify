@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/config.hash: e313182cba6f0619720f91d8860ae1bb
+    kubernetes.io/config.mirror: e313182cba6f0619720f91d8860ae1bb
+    kubernetes.io/config.seen: 2016-06-27T08:11:03.581426255Z
+    kubernetes.io/config.source: file
+  creationTimestamp: 2016-06-27T08:11:43Z
+  labels:
+    k8s-app: fluentd-logging
+  name: fluentd-elasticsearch-kubernetes-minion-m8cb
+  namespace: kube-system
+  resourceVersion: "144"
+  selfLink: /api/v1/namespaces/kube-system/pods/fluentd-elasticsearch-kubernetes-minion-m8cb
+  uid: c8dc4015-3c3e-11e6-b290-42010a800002
+spec:
+  containers:
+  - image: gcr.io/google_containers/fluentd-elasticsearch:1.15
+    imagePullPolicy: IfNotPresent
+    name: fluentd-elasticsearch
+    resources:
+      limits:
+        memory: 200Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    terminationMessagePath: /dev/termination-log
+    volumeMounts:
+    - mountPath: /var/log
+      name: varlog
+    - mountPath: /var/lib/docker/containers  
+      name: varlibdockercontainers
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  nodeName: kubernetes-minion-m8cb
+  restartPolicy: Always
+  securityContext: {}
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - hostPath:
+      path: /var/log
+    name: varlog
+  - hostPath:
+      path: /var/lib/docker/containers
+    name: varlibdockercontainers
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2016-06-27T08:12:09Z
+    status: "True"
+    type: Ready
+  containerStatuses:
+  - containerID: docker://810bee66b81c7634b1f5efe475700711a993429ead338a42f36ffb70952f595c
+    image: gcr.io/google_containers/fluentd-elasticsearch:1.15
+    imageID: docker://7948654508f0c0a9d43e45ccdc88a920717bd8d47bdd9d401ced76654aa0129b
+    lastState: {}
+    name: fluentd-elasticsearch
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2016-06-27T08:12:08Z
+  hostIP: 10.128.0.5
+  phase: Running
+  podIP: 10.244.1.2
+  startTime: 2016-06-27T08:11:43Z

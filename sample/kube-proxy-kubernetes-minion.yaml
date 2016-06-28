@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/config.hash: 854dd9e49924d0b67b0027533b306888
+    kubernetes.io/config.mirror: 854dd9e49924d0b67b0027533b306888
+      kubernetes.io/config.seen: 2016-06-27T08:11:02.883403795Z
+    kubernetes.io/config.source: file
+  creationTimestamp: 2016-06-27T08:11:42Z
+  name: kube-proxy-kubernetes-minion-f0hr
+  namespace: kube-system
+  resourceVersion: "127"
+  selfLink: /api/v1/namespaces/kube-system/pods/kube-proxy-kubernetes-minion-f0hr
+  uid: c8664766-3c3e-11e6-b290-42010a800002
+spec:
+  containers:
+  - command:
+    - /bin/sh
+    - -c
+    - kube-proxy --master=https://kubernetes-master --kubeconfig=/var/lib/kube-proxy/kubeconfig  --cluster-cidr=10.244.0.0/16
+      --resource-container="" --v=2  1>>/var/log/kube-proxy.log 2>&1
+    image: gcr.io/google_containers/kube-proxy:c126c6dbe73c9e7db8b835f2dd6b8f8e
+    imagePullPolicy: IfNotPresent
+    name: kube-proxy
+    resources:
+      requests:
+        cpu: 20m
+    securityContext:
+      privileged: true
+    terminationMessagePath: /dev/termination-log
+    volumeMounts:
+    - mountPath: /etc/ssl/certs
+      name: ssl-certs-host
+      readOnly: true
+    - mountPath: /var/log
+      name: varlog
+    - mountPath: /var/lib/kube-proxy/kubeconfig
+      name: kubeconfig
+  dnsPolicy: ClusterFirst
+  hostNetwork: true
+  nodeName: kubernetes-minion-f0hr
+  restartPolicy: Always
+  securityContext: {}
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - hostPath:
+      path: /usr/share/ca-certificates
+    name: ssl-certs-host
+  - hostPath:
+      path: /var/lib/kube-proxy/kubeconfig
+    name: kubeconfig
+  - hostPath:
+      path: /var/log
+    name: varlog
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2016-06-27T08:11:45Z
+    status: "True"
+    type: Ready
+  containerStatuses:
+  - containerID: docker://3c1761f44b191055424a5275dff6494c3bb063cbb09d5509ec136fa5a7b7fd11
+    image: gcr.io/google_containers/kube-proxy:c126c6dbe73c9e7db8b835f2dd6b8f8e
+    imageID: docker://9f8e97123a2c24c0b7c3678706593afaa5b3eaa6fcbdd86aa5c7a90fdb73425d
+    lastState: {}
+    name: kube-proxy
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2016-06-27T08:11:44Z
+  hostIP: 10.128.0.3
+  phase: Running
+  podIP: 10.128.0.3
+  startTime: 2016-06-27T08:11:42Z
