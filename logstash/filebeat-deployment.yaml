@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: filebeat-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: filebeat
+    spec:
+      containers:
+      - name: filebeat
+        imagePullPolicy: Always
+        image: gcr.io/kube-simulation/filebeat-elasticsearch:0.1
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+          - name: varlog
+            mountPath: /var/log
+        volumes:
+          - name: varlog
+            hostpath:
+              - path: /var/log
