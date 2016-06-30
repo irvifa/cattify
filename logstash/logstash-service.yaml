@@ -14,3 +14,4 @@ spec:
     targetPort: log
   selector:
     k8s-app: logstash-logging
+    run: logstash-logging
