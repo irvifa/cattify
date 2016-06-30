@@ -1,6 +1,6 @@
 .PHONY:	build push
 
-IMAGE = logstash
+IMAGE = logstash-elasticsearch
 TAG = 0.1
 
 build:	

@@ -13,5 +13,6 @@ spec:
     protocol: TCP
     targetPort: log
   selector:
-    k8s-app: logstash-logging
+    k8s-app: logstash
     run: logstash-logging
+  type: LoadBalancer
