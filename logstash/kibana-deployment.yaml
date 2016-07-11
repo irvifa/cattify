@@ -1,26 +1,19 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: kibana-logging-v1
+  name: kibana-deployments
   namespace: kube-system
   labels:
-    k8s-app: kibana-logging
-    version: v1
-    kubernetes.io/cluster-service: "true"
+    app: kibana
 spec:
   replicas: 1
-  selector:
-    k8s-app: kibana-logging
-    version: v1
   template:
     metadata:
       labels:
-        k8s-app: kibana-logging
-        version: v1
-        kubernetes.io/cluster-service: "true"
+        app: kibana
     spec:
       containers:
-      - name: kibana-logging
+      - name: kibana
         image: gcr.io/google_containers/kibana:1.3
         resources:
           # keep request = limit to keep this container in guaranteed class

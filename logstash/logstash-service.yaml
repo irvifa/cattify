@@ -14,5 +14,5 @@ spec:
     targetPort: log
   selector:
     k8s-app: logstash
-    run: logstash-logging
+    run: logstash-deployment
   type: LoadBalancer
