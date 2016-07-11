@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: kibana-deployments
   namespace: kube-system
-  labels:
-    app: kibana
 spec:
   replicas: 1
   template:
@@ -13,17 +11,16 @@ spec:
         app: kibana
     spec:
       containers:
-      - name: kibana
-        image: gcr.io/google_containers/kibana:1.3
+      - image: gcr.io/google_containers/kibana:1.3
+        name: kibana
         resources:
-          # keep request = limit to keep this container in guaranteed class
           limits:
             cpu: 100m
           requests:
             cpu: 100m
         env:
           - name: "ELASTICSEARCH_URL"
-            value: "http://elasticsearch-logging:9200"
+            value: "http://elasticsearch-logging.kube-system.svc.cluster.local:9200"
         ports:
         - containerPort: 5601
           name: ui
