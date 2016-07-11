@@ -1,5 +1,5 @@
 apiVersion: extensions/v1beta1
-kind:  DaemonSet
+kind: DaemonSet
 metadata:
   name: filebeat-daemonset
   namespace: kube-system
@@ -11,8 +11,11 @@ spec:
     spec:
       volumes:
       - name: varlog
-        hostpath:
-          - path: /var/log
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
       containers:
       - name: filebeat
         imagePullPolicy: Always
@@ -21,3 +24,5 @@ spec:
         volumeMounts:
           - name: varlog
             mountPath: /var/log
+          - name: varlibdockercontainers
+            mountPath: /var/lib/docker/containers
