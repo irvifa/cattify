@@ -279,7 +279,7 @@ output:
   logstash:
     # The Logstash hosts
     enabled: true
-    hosts: [${LOGSTASH_HOSTS:'logstash:11000'}]
+    hosts: [${LOGSTASH_HOST:'logstash:11000'}]
 
     # Number of workers per Logstash host.
     worker: 1
