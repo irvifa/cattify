@@ -1,6 +1,6 @@
 .PHONY:	build push
 
-IMAGE = filebeat-elasticsearch
+IMAGE = filebeat
 TAG = 0.1
 
 build:	

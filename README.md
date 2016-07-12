@@ -1,4 +1,4 @@
-#Sample
+#Cattify
 
 This repository is provided us with several of `yaml` from the logging mechanism that being performed by addons from the kubernetes. Apparently, each of the nodes or previously named minions will have its own fluentd service and send the log data as a stream into the elastic search. Just look at the `yaml` files that being provided here to see, the config example of each of the node. There're actually several image that already being provided by google itself. 
 
