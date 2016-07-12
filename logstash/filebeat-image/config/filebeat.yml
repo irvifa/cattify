@@ -12,8 +12,9 @@ filebeat:
       # For each file found under this path, a harvester is started.
       # Make sure not file is defined twice as this can lead to unexpected behaviour.
       paths:
-        - /var/lo/*.log
+        - /var/log/containers/*.log
         #- c:\programdata\elasticsearch\logs\*
+      document_type: kube-logs
 
       # Configure the file encoding for reading files with international characters
       # following the W3C recommendation for HTML5 (http://www.w3.org/TR/encoding).
