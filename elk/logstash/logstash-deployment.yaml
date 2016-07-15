@@ -13,7 +13,7 @@ spec:
       containers:
       - name: logstash
         imagePullPolicy: Always
-        image: gcr.io/kube-simulation/logstash-elasticsearch:0.1
+        image: gcr.io/kube-simulation/logstash-elasticsearch:0.3
         terminationMessagePath: /dev/termination-log
         ports:
         - containerPort: 11000

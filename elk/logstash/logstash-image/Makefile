@@ -1,7 +1,7 @@
 .PHONY:	build push
 
 IMAGE = logstash-elasticsearch
-TAG = 0.1
+TAG = 0.3
 
 build:	
 	docker build -t gcr.io/kube-simulation/$(IMAGE):$(TAG) .
