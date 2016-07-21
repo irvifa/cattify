@@ -1,23 +1,26 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
-metadata:
-  name: logstash-deployment
+metadata: 
+  name: sinatra-deployment
   namespace: kube-system
-spec:
+spec: 
   replicas: 2
   template:
     metadata:
       labels:
-        app: logstash
+        app: sinatra
     spec:
       containers:
-      - name: logstash
-        imagePullPolicy: Always
-        image: gcr.io/kube-simulation/logstash-elasticsearch:0.2
-        terminationMessagePath: /dev/termination-log
+      - image: gcr.io/kube-simulation/sinatra:0.1
+        name: sinatra
+        resources:
+          limits:
+            cpu: 100m
+          requests:
+            cpu: 100m
         ports:
-        - containerPort: 11000
-          name: log
+        - containerPort: 4567
+          name: sin
           protocol: TCP
         volumeMounts:
           - name: varlog
