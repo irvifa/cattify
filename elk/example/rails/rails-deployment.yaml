@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata: 
-  name: sinatra-deployment
+  name: rails-deployment
   namespace: kube-system
 spec: 
   replicas: 2
   template:
     metadata:
       labels:
-        app: sinatra
+        app: rails
     spec:
       containers:
-      - image: gcr.io/kube-simulation/sinatra:0.1
-        name: sinatra
+      - image: gcr.io/kube-simulation/rails:0.1
+        name: rails
         resources:
           limits:
             cpu: 100m

@@ -1,6 +1,6 @@
-.PHONY:	build push
+.PHONY:PHONYbuild push
 
-IMAGE = rails
+IMAGE = sample
 TAG = 0.1
 PROJECT =  kube-simulation
 
@@ -9,4 +9,6 @@ build:
 
 push:	
 	gcloud docker --server=gcr.io push gcr.io/$(PROJECT)/$(IMAGE):$(TAG)
+
+
 
