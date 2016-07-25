@@ -17,7 +17,7 @@ spec:
         hostPath:
           path: /var/lib/docker/containers
       containers:
-      - image: kibana:4.0
+      - image: kibana:4.2
         name: kibana
         resources:
           limits:

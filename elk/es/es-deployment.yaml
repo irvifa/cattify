@@ -10,7 +10,7 @@ spec:
         app: elasticsearch
     spec:
       containers:
-      - image: elasticsearch:1.7
+      - image: elasticsearch:2.0
         name: elasticsearch         
         resources:
           # keep request = limit to keep this container in guaranteed class
