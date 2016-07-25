@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - image: rvu95/gosheen:0.1
-        name: sinatra
+        name: gosheen
         resources:
           limits:
             cpu: 100m
