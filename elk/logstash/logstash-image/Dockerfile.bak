@@ -9,8 +9,8 @@ RUN echo "deb https://packages.elastic.co/logstash/2.3/debian stable main" | tee
 RUN apt-get update 
 RUN apt-get install -y logstash curl
 
-ADD logstash.conf /etc/logstash/conf.d/logstash.conf
+ADD sample.conf /etc/logstash/conf.d/sample.conf
 
 VOLUME ["/opt/logstash/bin","/etc/logstash/conf.d","/opt/logs"]
 EXPOSE 11000
-CMD ["/opt/logstash/bin/logstash","-f","/etc/logstash/conf.d/logstash.conf"]
+CMD ["/opt/logstash/bin/logstash","-f","/etc/logstash/conf.d/sample.conf"]
