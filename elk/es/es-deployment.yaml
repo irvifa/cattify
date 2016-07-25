@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: elasticsearch-deployments
-  namespace: kube-system
 spec:
   replicas: 2
   template:
@@ -11,7 +10,7 @@ spec:
         app: elasticsearch
     spec:
       containers:
-      - image: gcr.io/google_containers/elasticsearch:1.8
+      - image: elasticsearch:1.7
         name: elasticsearch         
         resources:
           # keep request = limit to keep this container in guaranteed class

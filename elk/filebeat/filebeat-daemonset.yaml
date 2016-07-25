@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: filebeat-daemonset
-  namespace: kube-system
 spec:
   template:
     metadata:
@@ -19,7 +18,7 @@ spec:
       containers:
       - name: filebeat
         imagePullPolicy: Always
-        image: gcr.io/kube-simulation/filebeat:0.1
+        image: gcr.io/kube-simulation/filebeat:0.5
         terminationMessagePath: /dev/termination-log
         env:
         - name: LOGSTASH_HOST
