@@ -6,9 +6,9 @@ metadata:
     app: nodesheen-logging
 spec:
   ports:
-  - port: 4567
+  - port: 15120
     protocol: TCP
-    targetPort: sin
+    targetPort: node
   selector:
     app: nodesheen
   type: LoadBalancer

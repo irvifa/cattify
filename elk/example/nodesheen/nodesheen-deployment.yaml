@@ -18,8 +18,8 @@ spec:
           requests:
             cpu: 100m
         ports:
-        - containerPort: 4567
-          name: sin
+        - containerPort: 15120
+          name: nod
           protocol: TCP
         volumeMounts:
           - name: varlog
