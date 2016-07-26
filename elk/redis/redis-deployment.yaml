@@ -17,7 +17,7 @@ spec:
         hostPath:
           path: /var/lib/docker/containers
       containers:
-      - name: logstash
+      - name: redis
         imagePullPolicy: Always
         image: redis
         terminationMessagePath: /dev/termination-log
