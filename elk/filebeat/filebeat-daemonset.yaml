@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: filebeat-daemonset
+  namespace: debug
 spec:
   template:
     metadata:
@@ -22,7 +23,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         env:
         - name: LOGSTASH_HOST
-          value: "'logstash-buffer-logging.default.svc.cluster.local:11000'"
+          value: "'logstash-buffer-logging.debug.svc.cluster.local:11000'"
         - name: LOG_LEVEL
           value: info
         volumeMounts:

@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: kibana-deployments
+  namespace: debug
 spec:
   replicas: 1
   template:
@@ -26,7 +27,7 @@ spec:
             cpu: 100m
         env:
           - name: "ELASTICSEARCH_URL"
-            value: "http://elasticsearch-logging.default.svc.cluster.local:9200"
+            value: "http://elasticsearch-logging.debug.svc.cluster.local:9200"
         ports:
         - containerPort: 5601
           name: ui

@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: logstash-filter-logging
+  namespace: debug
   labels:
     app: logstash-filter-logging
 spec:

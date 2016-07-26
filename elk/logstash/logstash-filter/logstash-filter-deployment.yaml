@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: logstash-filter-deployment
+  namespace: debug
 spec:
   replicas: 2
   template:
@@ -21,6 +22,11 @@ spec:
         imagePullPolicy: Always
         image: gcr.io/kube-simulation/logstash-filter:0.1
         terminationMessagePath: /dev/termination-log
+        env:
+        - name: "REDIS_HOST"
+          value: "'http://redis-logging.debug.svc.cluster.local'"
+        - name: "ELASTICSEARCH_URL"
+          value: "'http://elasticsearch-logging.debug.svc.cluster.local:9200'"
         ports:
         - containerPort: 11000
           name: log
