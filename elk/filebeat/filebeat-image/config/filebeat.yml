@@ -43,7 +43,7 @@ filebeat:
 
       # Exclude files. A list of regular expressions to match. Filebeat drops the files that
       # are matching any regular expression from the list. By default, no files are dropped.
-      # exclude_files: [".gz$"]
+      exclude_files: ["filebeat-daemonset*"]
 
       # Optional additional fields. These field can be freely picked
       # to add additional information to the crawled log files for filtering

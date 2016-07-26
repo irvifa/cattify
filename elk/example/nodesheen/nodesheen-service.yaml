@@ -8,7 +8,7 @@ spec:
   ports:
   - port: 15120
     protocol: TCP
-    targetPort: node
+    targetPort: nod
   selector:
     app: nodesheen
   type: LoadBalancer
