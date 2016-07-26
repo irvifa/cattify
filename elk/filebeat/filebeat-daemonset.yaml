@@ -22,7 +22,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         env:
         - name: LOGSTASH_HOST
-          value: "'logstash-logging.default.svc.cluster.local:11000'"
+          value: "'logstash-buffer-logging.default.svc.cluster.local:11000'"
         - name: LOG_LEVEL
           value: info
         volumeMounts:
