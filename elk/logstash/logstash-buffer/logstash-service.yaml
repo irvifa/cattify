@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: logstash-buffer-logging
+  labels:
+    app: logstash-buffer-logging
+spec:
+  ports:
+  - port: 11000
+    protocol: TCP
+    targetPort: log
+  selector:
+    app: logstash-buffer
