@@ -1,0 +1,27 @@
+version: '2'
+services:
+  rails:
+    image: rvu95/rails:0.1 
+    volumes:
+      - datavolume:/app/log
+    ports:
+      - "3000:3000"
+    environment:
+      LOGSTASH_URI: "tcp://logstash:11000"
+    links: 
+      - logstash
+  logstash:
+    image: rvu95/lsth-flbt:0.7
+    volumes:
+      - datavolume:/var/log/containers
+  filebeat:
+    image: rvu95/filebeat:0.5
+    volumes:
+      - datavolume:/var/log/containers
+    environment:
+      LOGSTASH_HOST: "'logstash:11000'"
+      LOG_LEVEL: info
+    links:
+      - logstash
+volumes:
+  datavolume: {}
